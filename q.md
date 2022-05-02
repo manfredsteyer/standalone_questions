@@ -29,7 +29,7 @@ Now, without NgMoudles, this very structure might look like this:
 So, I'm wondering where to register the "feature store" (StoreModule.forFeature).
 
 
-One Option that comes in mind: Put it into the FeatureLib's RouterConfig so it ends up in an enviroment injector.
+One Option that comes in mind: Put it into the FeatureLib's router config so it ends up in an enviroment injector.
 
 ```
    +-------> [FeatureLib | RouterConfig ] -------+
@@ -37,11 +37,11 @@ One Option that comes in mind: Put it into the FeatureLib's RouterConfig so it e
 [App] ---> [FeatureLib | RouterConfig ] ---> [DataLib]
 ```
 
-However, the Store (Slice) is reused among several Features (FeatureLibs) of the same application area.
+However, the Store (Slice) is reused among several features (FeatureLibs) of the same application area.
 
 To get the same behavior as before, we needed one (and only one) environment injector on top of all features of the same application area.
 
-Idea: Add a dummy RouterConfig with a component-less route:
+Idea: Add a dummy router config with a component-less route:
 
 
 ```
@@ -53,11 +53,11 @@ Idea: Add a dummy RouterConfig with a component-less route:
                                             *2
 ```
 
-*1 Perhaps we can move the FeatureLib's RouterConfig into the AreaLib too.
-*2 Drawback: the AreaLib's Router config needs to be aware of the NGRX config in the DataLib. 
+*1 Perhaps we can move the FeatureLib's router config into the AreaLib too.
+*2 Drawback: the AreaLib's router config needs to be aware of the NGRX config in the DataLib. 
 
-Are there any other approaches I'm missing here?
-Is there another option of created an environment injector in the DataLib?
+- Are there any other approaches I'm missing here?
+- Is there another option of creating an environment injector in the DataLib?
 
 Using a router config in the data lib doesn't work, because this lib isn't routed ...
 
