@@ -8,8 +8,8 @@ The Nx community often uses the following structure:
    +-------> [FeatureLib | FeatureNgModule ] -------+
    |                                                V         
 [App] ---> [FeatureLib | FeatureNgModule ] ---> [DataLib | DataNgModule]
-																^
-																|
+                                                            ^
+                                                            |
 
                                                     StoreModule.forFeature(...)
 ```
